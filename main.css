@@ -1,0 +1,557 @@
+:root {
+    --primary: #0099ff;
+    --secondary: #00ccff;
+    --accent: #0066cc;
+    --background: #f0f8ff;
+    --text: #1a1a1a;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --nav-bg: linear-gradient(135deg, var(--primary), var(--accent));
+    --wave-color: rgba(0, 153, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* Wave Animation */
+.wave-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: var(--wave-color);
+    border-radius: 40%;
+}
+
+.wave:nth-child(1) {
+    animation: wave 20s linear infinite;
+    opacity: 0.3;
+}
+
+.wave:nth-child(2) {
+    animation: wave 15s linear infinite;
+    opacity: 0.2;
+    animation-delay: -5s;
+}
+
+.wave:nth-child(3) {
+    animation: wave 10s linear infinite;
+    opacity: 0.1;
+    animation-delay: -2s;
+}
+
+@keyframes wave {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Menu Toggle */
+.menu-toggle {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: var(--nav-bg);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Sidenav */
+.sidenav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    padding: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.sidenav.active {
+    transform: translateX(0);
+}
+
+.sidenav-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: #60a5fa;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a i {
+    font-size: 1.2rem;
+    color: #60a5fa;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-10px);
+}
+
+.nav-links a:hover i {
+    transform: scale(1.2);
+}
+
+.nav-links a.active {
+    background: rgba(255, 255, 255, 0.15);
+    font-weight: 500;
+}
+
+.nav-links a.active::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: #60a5fa;
+    border-radius: 0 2px 2px 0;
+}
+
+.menu-toggle {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.menu-toggle i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.active i {
+    transform: rotate(180deg);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-10px);
+}
+
+/* Main Content */
+.main {
+    padding: 2rem;
+    transition: margin-right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main.shifted {
+    margin-right: 280px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--nav-bg);
+    border-radius: 25px;
+    color: white;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.swimmer-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: swim 3s ease-in-out infinite;
+}
+
+@keyframes swim {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h2 {
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--nav-bg);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.7) 10%, transparent 10.01%);
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.5s, opacity 1s;
+}
+
+.ripple:active::after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main.shifted {
+        margin-right: 0;
+    }
+    
+    .hero {
+        padding: 2rem 1rem;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-card {
+        margin: 0 1rem;
+    }
+}
+
+/* Loader */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.loader-container.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.loader .wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    animation: spin 1s linear infinite;
+}
+
+.loader .wave:nth-child(2) {
+    border-top-color: var(--secondary);
+    animation-delay: 0.3s;
+}
+
+.loader .wave:nth-child(3) {
+    border-top-color: var(--accent);
+    animation-delay: 0.6s;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Page Transitions */
+.page-transition {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.sidenav {
+    background: linear-gradient(135deg, #0891b2 0%, #0c4a6e 100%);
+}
+
+.logo i {
+    color: #22d3ee;
+}
+
+.nav-links a i {
+    color: #22d3ee;
+}
+
+.nav-links a.active::before {
+    background: #22d3ee;
+    box-shadow: 0 0 15px #22d3ee;
+}
+
+.menu-toggle {
+    background: linear-gradient(135deg, #0891b2 0%, #0c4a6e 100%);
+}
+
+/* New hover effects */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: #22d3ee;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    background: rgba(34, 211, 238, 0.1);
+    transform: translateX(-10px);
+    box-shadow: inset 0 0 15px rgba(34, 211, 238, 0.1);
+}
+
+/* Glowing effect on active link */
+.nav-links a.active {
+    background: rgba(34, 211, 238, 0.15);
+    box-shadow: inset 0 0 20px rgba(34, 211, 238, 0.1);
+}
+
+.sidenav {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    backdrop-filter: blur(10px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Wave animation background */
+.sidenav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.1) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        rgba(255, 255, 255, 0.1) 75%, 
+        transparent 75%, 
+        transparent);
+    background-size: 30px 30px;
+    animation: wave 15s linear infinite;
+    opacity: 0.1;
+}
+
+@keyframes wave {
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
+}
+
+/* Glowing icons */
+.nav-links a i {
+    color: white;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover i {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Active link effect */
+.nav-links a.active {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a.active::before {
+    background: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Menu toggle button */
+.menu-toggle {
+    background: var(--primary);
+    overflow: hidden;
+}
+
+.menu-toggle::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-toggle:hover::after {
+    opacity: 1;
+}
